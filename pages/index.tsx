@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import { ToppageDocument } from "../.slicemachine/prismicio";
@@ -16,6 +17,10 @@ const IndexPage = ({ contents }: Props) => {
   };
   return (
     <Container>
+      <Head>
+        <title>mogami.dev</title>
+        <meta name="description" content="最上土川のポートフォリオサイト" />
+      </Head>
       <Row style={{ marginTop: "40px" }}>
         <Col xs={12} md={4}>
           <img src="./myicon.jpg" alt="icon" style={iconStyle} />
