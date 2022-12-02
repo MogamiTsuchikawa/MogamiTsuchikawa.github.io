@@ -1,6 +1,7 @@
 import { FilledLinkToMediaField, FilledLinkToWebField } from "@prismicio/types";
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import { ToppageDocument } from "../.slicemachine/prismicio";
@@ -88,6 +89,7 @@ const IndexPage = ({ contents }: Props) => {
               <a
                 href={(con.link as FilledLinkToWebField).url}
                 target="_blank"
+                rel="noreferrer"
                 style={{
                   margin: "2px",
                   textDecoration: "none",
@@ -97,7 +99,7 @@ const IndexPage = ({ contents }: Props) => {
                 }}
                 key={con.name}
               >
-                <img
+                <Image
                   src={(con.icon as FilledLinkToMediaField).url}
                   alt=""
                   style={{ width: "100px" }}
