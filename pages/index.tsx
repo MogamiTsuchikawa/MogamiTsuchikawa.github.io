@@ -44,6 +44,7 @@ const IndexPage = ({ contents }: Props) => {
                 margin: "0 0 0 0",
                 textAlign: "center",
               }}
+              key={af.viewid}
             >
               {af.content}
             </p>
@@ -58,9 +59,11 @@ const IndexPage = ({ contents }: Props) => {
           <div style={{ margin: "40px 0 10px 0", textAlign: "center" }}>
             {contents.data.awards.map((aw) =>
               aw.link.link_type !== "Any" ? (
-                <a href={aw.link.link_type}>{aw.content}</a>
+                <a href={aw.link.link_type} key={aw.content}>
+                  {aw.content}
+                </a>
               ) : (
-                <p>{aw.content}</p>
+                <p key={aw.content}>{aw.content}</p>
               )
             )}
           </div>
