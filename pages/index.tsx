@@ -1,3 +1,4 @@
+import { FilledLinkToMediaField, FilledLinkToWebField } from "@prismicio/types";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -79,6 +80,32 @@ const IndexPage = ({ contents }: Props) => {
           <h2 style={{ textAlign: "center", margin: "40px 0 10px 0" }}>
             Contacts
           </h2>
+          <div
+            className="d-flex justify-content-center"
+            style={{ margin: "40px 0 10px 0" }}
+          >
+            {contents.data.contacts.map((con) => (
+              <a
+                href={(con.link as FilledLinkToWebField).url}
+                target="_blank"
+                style={{
+                  margin: "2px",
+                  textDecoration: "none",
+                  color: "inherit",
+                  width: "150px",
+                  textAlign: "center",
+                }}
+                key={con.name}
+              >
+                <img
+                  src={(con.icon as FilledLinkToMediaField).url}
+                  alt=""
+                  style={{ width: "100px" }}
+                />
+                <p>{con.name}</p>
+              </a>
+            ))}
+          </div>
         </Col>
       </Row>
       <Row>
