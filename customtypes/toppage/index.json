@@ -1,0 +1,93 @@
+{
+  "id": "toppage",
+  "label": "TopPage",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "description",
+          "placeholder": ""
+        }
+      },
+      "affiliation": {
+        "type": "Group",
+        "config": {
+          "label": "affiliation",
+          "fields": {
+            "viewid": {
+              "type": "Number",
+              "config": {
+                "label": "viewId",
+                "placeholder": ""
+              }
+            },
+            "content": {
+              "type": "Text",
+              "config": {
+                "label": "content",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "awards": {
+        "type": "Group",
+        "config": {
+          "label": "awards",
+          "fields": {
+            "content": {
+              "type": "Text",
+              "config": {
+                "label": "content",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      },
+      "contacts": {
+        "type": "Group",
+        "config": {
+          "label": "contacts",
+          "fields": {
+            "icon": {
+              "type": "Link",
+              "config": {
+                "label": "icon",
+                "placeholder": "",
+                "select": "media"
+              }
+            },
+            "name": {
+              "type": "Text",
+              "config": {
+                "label": "name",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

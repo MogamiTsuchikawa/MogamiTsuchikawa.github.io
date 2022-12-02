@@ -6,6 +6,151 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for TopPage documents */
+interface ToppageDocumentData {
+    /**
+     * description field in *TopPage*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
+     * affiliation field in *TopPage*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.affiliation[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    affiliation: prismicT.GroupField<Simplify<ToppageDocumentDataAffiliationItem>>;
+    /**
+     * awards field in *TopPage*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.awards[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    awards: prismicT.GroupField<Simplify<ToppageDocumentDataAwardsItem>>;
+    /**
+     * contacts field in *TopPage*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.contacts[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    contacts: prismicT.GroupField<Simplify<ToppageDocumentDataContactsItem>>;
+}
+/**
+ * Item in TopPage → affiliation
+ *
+ */
+export interface ToppageDocumentDataAffiliationItem {
+    /**
+     * viewId field in *TopPage → affiliation*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.affiliation[].viewid
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    viewid: prismicT.NumberField;
+    /**
+     * content field in *TopPage → affiliation*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.affiliation[].content
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    content: prismicT.KeyTextField;
+}
+/**
+ * Item in TopPage → awards
+ *
+ */
+export interface ToppageDocumentDataAwardsItem {
+    /**
+     * content field in *TopPage → awards*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.awards[].content
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    content: prismicT.KeyTextField;
+    /**
+     * link field in *TopPage → awards*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.awards[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+}
+/**
+ * Item in TopPage → contacts
+ *
+ */
+export interface ToppageDocumentDataContactsItem {
+    /**
+     * icon field in *TopPage → contacts*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.contacts[].icon
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    icon: prismicT.LinkToMediaField;
+    /**
+     * name field in *TopPage → contacts*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.contacts[].name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * link field in *TopPage → contacts*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.contacts[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+}
+/**
+ * TopPage document from Prismic
+ *
+ * - **API ID**: `toppage`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ToppageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ToppageDocumentData>, "toppage", Lang>;
 /** Content for Work documents */
 interface WorkDocumentData {
     /**
@@ -100,12 +245,12 @@ export interface WorkDocumentDataImagesItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type WorkDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<WorkDocumentData>, "work", Lang>;
-export type AllDocumentTypes = WorkDocument;
+export type AllDocumentTypes = ToppageDocument | WorkDocument;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { WorkDocumentData, WorkDocumentDataImagesItem, WorkDocument, AllDocumentTypes };
+        export type { ToppageDocumentData, ToppageDocumentDataAffiliationItem, ToppageDocumentDataAwardsItem, ToppageDocumentDataContactsItem, ToppageDocument, WorkDocumentData, WorkDocumentDataImagesItem, WorkDocument, AllDocumentTypes };
     }
 }
