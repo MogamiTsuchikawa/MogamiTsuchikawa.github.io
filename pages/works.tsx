@@ -1,16 +1,21 @@
 import { WorkDocument } from "../.slicemachine/prismicio";
 import { createClient } from "../prismicio";
 import { GetStaticProps } from "next";
+import { Container, Row } from "react-bootstrap";
+import Work from "../component/Work";
 type Props = {
   works: WorkDocument[];
 };
 const WorkPage = ({ works }: Props) => {
   return (
-    <div>
-      {works.map((w) => (
-        <p key={w.id}>{w.data.title}</p>
-      ))}
-    </div>
+    <Container>
+      <h1>Works</h1>
+      <Row>
+        {works.map((work) => (
+          <Work work={work} key={work.id} />
+        ))}
+      </Row>
+    </Container>
   );
 };
 export default WorkPage;
