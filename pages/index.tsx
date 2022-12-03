@@ -99,7 +99,7 @@ const IndexPage = ({ contents }: Props) => {
                 }}
                 key={con.name}
               >
-                <Image
+                <img
                   src={(con.icon as FilledLinkToMediaField).url}
                   alt=""
                   style={{ width: "100px" }}
