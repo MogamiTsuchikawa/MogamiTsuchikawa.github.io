@@ -1,0 +1,41 @@
+{
+  "id": "tag",
+  "label": "Tag",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "name",
+          "placeholder": ""
+        }
+      },
+      "icon": {
+        "type": "Image",
+        "config": {
+          "label": "icon",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "icon_url": {
+        "type": "Text",
+        "config": {
+          "label": "icon_url",
+          "placeholder": ""
+        }
+      },
+      "is_skill": {
+        "type": "Boolean",
+        "config": {
+          "label": "is_skill",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
+      }
+    }
+  }
+}

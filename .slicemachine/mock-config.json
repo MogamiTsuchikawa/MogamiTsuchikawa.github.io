@@ -1,8 +1,12 @@
 {
   "_cts": {
-    "work": {},
+    "work": {
+      "tags": {}
+    },
     "toppage": {
-      "awards": {}
-    }
+      "awards": {},
+      "skills": {}
+    },
+    "tag": {}
   }
 }

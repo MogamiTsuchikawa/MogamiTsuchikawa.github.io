@@ -23,7 +23,7 @@ export default WorkPage;
 export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData });
 
-  const works = await client.getAllByType("work");
+  const works = await client.getAllByType("work", { fetchLinks: "tag.name" });
 
   return {
     props: { works },

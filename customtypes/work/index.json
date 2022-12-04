@@ -58,6 +58,31 @@
             }
           }
         }
+      },
+      "tags": {
+        "type": "Group",
+        "config": {
+          "label": "tags",
+          "fields": {
+            "tag": {
+              "type": "Link",
+              "config": {
+                "label": "tag",
+                "select": "document",
+                "customtypes": [
+                  "tag"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "short_description": {
+        "type": "Text",
+        "config": {
+          "label": "short_description",
+          "placeholder": ""
+        }
       }
     }
   }

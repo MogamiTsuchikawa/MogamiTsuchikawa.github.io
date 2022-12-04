@@ -87,6 +87,24 @@
             }
           }
         }
+      },
+      "skills": {
+        "type": "Group",
+        "config": {
+          "label": "skills",
+          "fields": {
+            "skill": {
+              "type": "Link",
+              "config": {
+                "label": "skill",
+                "select": "document",
+                "customtypes": [
+                  "tag"
+                ]
+              }
+            }
+          }
+        }
       }
     }
   }

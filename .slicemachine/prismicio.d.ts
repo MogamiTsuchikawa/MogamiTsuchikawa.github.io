@@ -6,6 +6,64 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for Tag documents */
+interface TagDocumentData {
+    /**
+     * name field in *Tag*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tag.name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * icon field in *Tag*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tag.icon
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    icon: prismicT.ImageField<never>;
+    /**
+     * icon_url field in *Tag*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tag.icon_url
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    icon_url: prismicT.KeyTextField;
+    /**
+     * is_skill field in *Tag*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: tag.is_skill
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    is_skill: prismicT.BooleanField;
+}
+/**
+ * Tag document from Prismic
+ *
+ * - **API ID**: `tag`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TagDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<TagDocumentData>, "tag", Lang>;
 /** Content for TopPage documents */
 interface ToppageDocumentData {
     /**
@@ -52,6 +110,17 @@ interface ToppageDocumentData {
      *
      */
     contacts: prismicT.GroupField<Simplify<ToppageDocumentDataContactsItem>>;
+    /**
+     * skills field in *TopPage*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.skills[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    skills: prismicT.GroupField<Simplify<ToppageDocumentDataSkillsItem>>;
 }
 /**
  * Item in TopPage → affiliation
@@ -142,6 +211,22 @@ export interface ToppageDocumentDataContactsItem {
     link: prismicT.LinkField;
 }
 /**
+ * Item in TopPage → skills
+ *
+ */
+export interface ToppageDocumentDataSkillsItem {
+    /**
+     * skill field in *TopPage → skills*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.skills[].skill
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    skill: prismicT.RelationField<"tag">;
+}
+/**
  * TopPage document from Prismic
  *
  * - **API ID**: `toppage`
@@ -208,6 +293,28 @@ interface WorkDocumentData {
      *
      */
     images: prismicT.GroupField<Simplify<WorkDocumentDataImagesItem>>;
+    /**
+     * tags field in *Work*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: work.tags[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    tags: prismicT.GroupField<Simplify<WorkDocumentDataTagsItem>>;
+    /**
+     * short_description field in *Work*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: work.short_description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    short_description: prismicT.KeyTextField;
 }
 /**
  * Item in Work → images
@@ -236,6 +343,22 @@ export interface WorkDocumentDataImagesItem {
     description: prismicT.KeyTextField;
 }
 /**
+ * Item in Work → tags
+ *
+ */
+export interface WorkDocumentDataTagsItem {
+    /**
+     * tag field in *Work → tags*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: work.tags[].tag
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    tag: prismicT.RelationField<"tag">;
+}
+/**
  * Work document from Prismic
  *
  * - **API ID**: `work`
@@ -245,12 +368,12 @@ export interface WorkDocumentDataImagesItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type WorkDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<WorkDocumentData>, "work", Lang>;
-export type AllDocumentTypes = ToppageDocument | WorkDocument;
+export type AllDocumentTypes = TagDocument | ToppageDocument | WorkDocument;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ToppageDocumentData, ToppageDocumentDataAffiliationItem, ToppageDocumentDataAwardsItem, ToppageDocumentDataContactsItem, ToppageDocument, WorkDocumentData, WorkDocumentDataImagesItem, WorkDocument, AllDocumentTypes };
+        export type { TagDocumentData, TagDocument, ToppageDocumentData, ToppageDocumentDataAffiliationItem, ToppageDocumentDataAwardsItem, ToppageDocumentDataContactsItem, ToppageDocumentDataSkillsItem, ToppageDocument, WorkDocumentData, WorkDocumentDataImagesItem, WorkDocumentDataTagsItem, WorkDocument, AllDocumentTypes };
     }
 }
