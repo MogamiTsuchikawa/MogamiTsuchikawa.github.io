@@ -117,7 +117,7 @@ const IndexPage = ({ contents }: Props) => {
           </h2>
         </Col>
         {contents.data.skills.map((skill) => (
-          <Col>
+          <Col key={skill.name}>
             <img
               src={skill.url!}
               alt={skill.name!}
