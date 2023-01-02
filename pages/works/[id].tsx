@@ -6,12 +6,17 @@ import { Container, Row, Col, Badge, Carousel, Button } from "react-bootstrap";
 import Link from "next/link";
 import { convertToHtml } from "../../util/markdown-util";
 import { FilledContentRelationshipField } from "@prismicio/types";
+import Head from "next/head";
 type Props = {
   work: WorkDocument;
 };
 const WorkDetailPage = ({ work }: Props) => {
   return (
     <Container>
+      <Head>
+        <title>{work.data.title}</title>
+        <meta name="description" content="最上土川のポートフォリオサイト" />
+      </Head>
       <Row className="mt-2">
         <Link href="/works">
           <Button variant="secondary" size="sm">

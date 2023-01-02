@@ -3,12 +3,17 @@ import { createClient } from "../prismicio";
 import { GetStaticProps } from "next";
 import { Container, Row } from "react-bootstrap";
 import Work from "../component/Work";
+import Head from "next/head";
 type Props = {
   works: WorkDocument[];
 };
 const WorkPage = ({ works }: Props) => {
   return (
     <Container>
+      <Head>
+        <title>mogami.dev - Works</title>
+        <meta name="description" content="最上土川のポートフォリオサイト" />
+      </Head>
       <h1>Works</h1>
       <Row>
         {works
