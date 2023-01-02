@@ -93,14 +93,18 @@
         "config": {
           "label": "skills",
           "fields": {
-            "skill": {
-              "type": "Link",
+            "url": {
+              "type": "Text",
               "config": {
-                "label": "skill",
-                "select": "document",
-                "customtypes": [
-                  "tag"
-                ]
+                "label": "url",
+                "placeholder": ""
+              }
+            },
+            "name": {
+              "type": "Text",
+              "config": {
+                "label": "name",
+                "placeholder": ""
               }
             }
           }

@@ -116,7 +116,17 @@ const IndexPage = ({ contents }: Props) => {
             Skill
           </h2>
         </Col>
+        {contents.data.skills.map((skill) => (
+          <Col>
+            <img
+              src={skill.url!}
+              alt={skill.name!}
+              style={{ height: 80, width: 80 }}
+            />
+          </Col>
+        ))}
       </Row>
+      <Row style={{ margin: "40px 0 10px 0" }}></Row>
     </Container>
   );
 };

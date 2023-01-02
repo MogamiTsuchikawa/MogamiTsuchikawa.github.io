@@ -11,19 +11,19 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
-    "description": "north",
+    "description": "team",
     "affiliation": [
       {
-        "viewid": 88,
-        "content": "command"
+        "viewid": 85,
+        "content": "hollow"
       }
     ],
     "awards": [
       {
-        "content": "future",
+        "content": "sick",
         "link": {
           "link_type": "Web",
-          "url": "http://twitter.com"
+          "url": "https://prismic.io"
         }
       }
     ],
@@ -36,25 +36,17 @@
           "url": "https://source.unsplash.com/random",
           "size": "10kB"
         },
-        "name": "common",
+        "name": "frame",
         "link": {
           "link_type": "Web",
-          "url": "https://prismic.io"
+          "url": "http://twitter.com"
         }
       }
     ],
     "skills": [
       {
-        "skill": {
-          "id": "mock_document_id",
-          "link_type": "Document",
-          "type": "tag",
-          "tags": [],
-          "lang": "en-us",
-          "slug": null,
-          "first_publication_date": "1970-01-01T00:00:01+0000",
-          "last_publication_date": "1970-01-01T01:00:00+0000"
-        }
+        "url": "darkness",
+        "name": "desert"
       }
     ]
   }

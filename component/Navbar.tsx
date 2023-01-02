@@ -2,8 +2,8 @@ import Link from "next/link";
 import { Navbar, Nav } from "react-bootstrap";
 const NavBar = () => {
   return (
-    <Navbar collapseOnSelect expand="sm" bg="primary" variant="dark">
-      <Navbar.Brand href="#home">
+    <Navbar collapseOnSelect expand="sm" style={{ backgroundColor: "skyblue" }}>
+      <Navbar.Brand href="#home" style={{ color: "white", marginLeft: "4px" }}>
         <img
           src="/myicon.jpg"
           width="30"

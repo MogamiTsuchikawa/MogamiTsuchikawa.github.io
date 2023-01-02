@@ -216,15 +216,25 @@ export interface ToppageDocumentDataContactsItem {
  */
 export interface ToppageDocumentDataSkillsItem {
     /**
-     * skill field in *TopPage → skills*
+     * url field in *TopPage → skills*
      *
-     * - **Field Type**: Content Relationship
+     * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: toppage.skills[].skill
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     * - **API ID Path**: toppage.skills[].url
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    skill: prismicT.RelationField<"tag">;
+    url: prismicT.KeyTextField;
+    /**
+     * name field in *TopPage → skills*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toppage.skills[].name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
 }
 /**
  * TopPage document from Prismic
