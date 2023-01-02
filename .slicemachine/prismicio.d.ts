@@ -261,17 +261,6 @@ interface WorkDocumentData {
      */
     cover_image: prismicT.ImageField<never>;
     /**
-     * description field in *Work*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: work.description
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    description: prismicT.RichTextField;
-    /**
      * create at field in *Work*
      *
      * - **Field Type**: Timestamp
@@ -315,6 +304,17 @@ interface WorkDocumentData {
      *
      */
     short_description: prismicT.KeyTextField;
+    /**
+     * description field in *Work*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: work.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
 }
 /**
  * Item in Work → images
