@@ -11,9 +11,15 @@ const WorkPage = ({ works }: Props) => {
     <Container>
       <h1>Works</h1>
       <Row>
-        {works.map((work) => (
-          <Work work={work} key={work.id} />
-        ))}
+        {works
+          .sort(
+            (x, y) =>
+              new Date(y.data.create_at!).getTime() -
+              new Date(x.data.create_at!).getTime()
+          )
+          .map((work) => (
+            <Work work={work} key={work.id} />
+          ))}
       </Row>
     </Container>
   );
